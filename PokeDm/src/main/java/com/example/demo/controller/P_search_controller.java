@@ -37,6 +37,9 @@ public class P_search_controller {
 
 //			jdbcTemplate.update("INSERT INTO users (user_id,user_pass,user_name,user_image) VALUES(?,?,?,?);", user_id,
 //					user_pass, user_name, "");
+			
+			
+			
 			return "redirect:/P_serch";
 		}
 }
