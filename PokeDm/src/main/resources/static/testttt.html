@@ -1,12 +1,46 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<style>
+	.card1{
+        float: left;
+        padding-top: 15px;
+        padding-left: 50px;
+      }
+
+      .card2{
+        float: right;
+        padding-top: 15px;
+        padding-right: 50px;
+      }
+</style>
 </head>
 <body>
-		<p>etst
-			
-		</p>
+<form th:action="@{/poke_damage}" method="POST">
+	 <div class="card1" style="width: 18rem;">
+      <img src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/42062cbeca16839af3efe8a7d61ceb27a30f758b.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">攻撃側</h5>
+          <div class="Pokemon_colum">
+            <div></div>
+          </div>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+
+    <div class="card2" style="width: 18rem;">
+      <img src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/e10f25b88cfd78ee822f46d234e4768f.png" class="card-img-top" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">守備側</h5>
+          
+          <p class="card-text"></p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+        </div>
+    </div>
+</form>
 </body>
 </html>
