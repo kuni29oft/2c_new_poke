@@ -30,16 +30,16 @@
             <div class="card-body">
                 <h5 class="card-title">攻撃側</h5>
                 <p class="card-text">
-                    <th:block th:each="result:${Poke_table}">
-                        <p th:text "${Poke_name}"></p>
-                        <p th:text "${Poke_type1}"></p>
-                        <p th:text "${Poke_type2}"></p>
-                        <p th:text "${Poke_Hp}"></p>
-                        <p th:text "${Poke_Atk}"></p>
-                        <p th:text "${Poke_Def}"></p>
-                        <p th:text "${Poke_Satk}"></p>
-                        <p th:text "${Poke_Sdef}"></p>
-                        <p th:text "${Poke_Spd}"></p>
+                    <th:block th:each="result:${demo}">
+                        <p th:text "${name}"></p>
+                        <p th:text "${type1}"></p>
+                        <p th:text "${type2}"></p>
+                        <p th:text "${Hp}"></p>
+                        <p th:text "${Atk}"></p>
+                        <p th:text "${Def}"></p>
+                        <p th:text "${Satk}"></p>
+                        <p th:text "${Sdef}"></p>
+                        <p th:text "${Spd}"></p>
 
                     </th:block>
                 </p>
@@ -54,17 +54,16 @@
                 <h5 class="card-title">守備側</h5>
 
                 <p class="card-text">
-                    <th:block th:each="result:${Poke_table}">
-                        <p th:text "${Poke_name}"></p>
-                        <p th:text "${Poke_type1}"></p>
-                        <p th:text "${Poke_type2}"></p>
-                        <p th:text "${Poke_Hp}"></p>
-                        <p th:text "${Poke_Atk}"></p>
-                        <p th:text "${Poke_Def}"></p>
-                        <p th:text "${Poke_Satk}"></p>
-                        <p th:text "${Poke_Sdef}"></p>
-                        <p th:text "${Poke_Spd}"></p>
-
+                     <th:block th:each="result:${demo}">
+                        <p th:text "${name}"></p>
+                        <p th:text "${type1}"></p>
+                        <p th:text "${type2}"></p>
+                        <p th:text "${Hp}"></p>
+                        <p th:text "${Atk}"></p>
+                        <p th:text "${Def}"></p>
+                        <p th:text "${Satk}"></p>
+                        <p th:text "${Sdef}"></p>
+                        <p th:text "${Spd}"></p>
                     </th:block>
                 </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
