@@ -24,15 +24,13 @@ public class P_bato_controller {
 	}
 	@RequestMapping(path="/poke_damage",method=RequestMethod.POST)
 	public String battle_gra(String Poke_name1,String Poke_name2,Model model) {
-		List<Map<String,Object>> resultList;
+		List<Map<String,Object>> resultList1,resultList2;
 		
-		if(Poke_name1!=null) {
-			resultList=jdbcTemplate.queryForList("select * from demo where name =?",Poke_name1);
-			model.addAttribute("selectResult",resultList);
-		}else if(Poke_name2!=null) {
-			resultList=jdbcTemplate.queryForList("select * from demo where name=? ",Poke_name2);
-			model.addAttribute("selectResult",resultList);
-		}
+			resultList1=jdbcTemplate.queryForList("select * from demo where name =?",Poke_name1);
+			model.addAttribute("selectResult1",resultList1);
+			resultList2=jdbcTemplate.queryForList("select * from demo where name=? ",Poke_name2);
+			model.addAttribute("selectResult2",resultList2);
+		
 		return "p_battle";
 		
 	}

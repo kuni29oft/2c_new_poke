@@ -16,60 +16,71 @@
             padding-top: 15px;
             padding-right: 100px;
         }
-
+        
+        .Btn_so{
+			width: 200px;
+			height: 50px;
+			margin:30px;
+		
+		}
+		
+		.P_images{
+			width: 100px;
+			height: 100px;
+		}
         
     </style>
 </head>
 <body>
     
     <form th:action="@{/poke_damage}" method="POST">
-
         <div class="card1" style="width: 30rem;">
-            <input type="text" name="Poke_name1" class="I_1" />
-            <img src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/42062cbeca16839af3efe8a7d61ceb27a30f758b.png" class="card-img-top" alt="...">
+            <input type="text" name="Poke_name1" class="I_1" /><br>
+            <img src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg" class="P_images">
             <div class="card-body">
                 <h5 class="card-title">攻撃側</h5>
-                <p class="card-text">
-                    <th:block th:each="result:${demo}">
-                        <p th:text "${name}"></p>
-                        <p th:text "${type1}"></p>
-                        <p th:text "${type2}"></p>
-                        <p th:text "${Hp}"></p>
-                        <p th:text "${Atk}"></p>
-                        <p th:text "${Def}"></p>
-                        <p th:text "${Satk}"></p>
-                        <p th:text "${Sdef}"></p>
-                        <p th:text "${Spd}"></p>
+                 <th:block th:each="result:${selectResult1}">
+                       名前<p th:text="${result.name}"></p>
+                       タイプ1<p th:text="${result.type1}"></p>
+                       タイプ2<p th:text="${result.type2}"></p>
+                       体力<p th:text="${result.Hp}"></p>
+                       攻撃<p th:text="${result.Atk}"></p>
+                       防御<p th:text="${result.Def}"></p>
+                       特攻<p th:text="${result.Satk}"></p>
+                       特防<p th:text="${result.Sdef}"></p>
+                       素早さ<p th:text="${result.Spd}"></p>
 
                     </th:block>
+                <p class="card-text">
+                   
                 </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
 
         <div class="card2" style="width: 30rem;">
-            <input type="text" name="Poke_name2" class="I_2" />
-            <img src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/e10f25b88cfd78ee822f46d234e4768f.png" class="card-img-top" alt="...">
+            <input type="text" name="Poke_name2" class="I_2" /><br>
+            <img src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg" class="P_images">
             <div class="card-body">
                 <h5 class="card-title">守備側</h5>
-
+					<th:block th:each="result:${selectResult2}">
+                        名前<p th:text="${result.name}"></p>
+                       タイプ1<p th:text="${result.type1}"></p>
+                       タイプ2<p th:text="${result.type2}"></p>
+                       体力<p th:text="${result.Hp}"></p>
+                       攻撃<p th:text="${result.Atk}"></p>
+                       防御<p th:text="${result.Def}"></p>
+                       特攻<p th:text="${result.Satk}"></p>
+                       特防<p th:text="${result.Sdef}"></p>
+                       素早さ<p th:text="${result.Spd}"></p>
+					 </th:block>
                 <p class="card-text">
-                     <th:block th:each="result:${demo}">
-                        <p th:text "${name}"></p>
-                        <p th:text "${type1}"></p>
-                        <p th:text "${type2}"></p>
-                        <p th:text "${Hp}"></p>
-                        <p th:text "${Atk}"></p>
-                        <p th:text "${Def}"></p>
-                        <p th:text "${Satk}"></p>
-                        <p th:text "${Sdef}"></p>
-                        <p th:text "${Spd}"></p>
-                    </th:block>
+                     
                 </p>
                 <a href="#" class="btn btn-primary">Go somewhere</a>
             </div>
         </div>
-        <input type="submit" class="Btn_so"/>
+        <input type="submit"value="送信" class="Btn_so"/>
     </form>
 </body>
 </html>
