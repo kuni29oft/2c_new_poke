@@ -28,8 +28,10 @@ public class P_bato_controller {
 		
 			resultList1=jdbcTemplate.queryForList("select * from demo where name =?",Poke_name1);
 			model.addAttribute("selectResult1",resultList1);
+			model.addAttribute("name1",Poke_name1);
 			resultList2=jdbcTemplate.queryForList("select * from demo where name=? ",Poke_name2);
 			model.addAttribute("selectResult2",resultList2);
+			model.addAttribute("name2",Poke_name2);
 		
 		return "p_battle";
 		
