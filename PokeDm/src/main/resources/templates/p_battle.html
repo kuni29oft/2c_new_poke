@@ -1,126 +1,149 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
-    <meta charset="UTF-8">
-    <title>Insert title here</title>
-    <style>
-        .card1 {
-            float: left;
-            padding-top: 15px;
-            padding-left: 100px;
-        }
 
-        .card2 {
-              float: left;
-            padding-top: 15px;
-            padding-right: 100px;
-        }
-        
-         .col-4{
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		.card1 {
+			float: left;
+			padding-top: 15px;
+			padding-left: 100px;
+		}
+
+		.card2 {
+			float: left;
+			padding-top: 15px;
+			padding-right: 100px;
+		}
+
+		.col-4 {
 			float: right;
 		}
-        .Btn_so{
+
+		.Btn_so {
 			width: 200px;
 			height: 50px;
-			margin:30px;
-		
+			margin: 30px;
+
 		}
-		
-		.P_images{
+
+		.P_images {
 			width: 100px;
 			height: 100px;
 		}
-        
-       
-    </style>
+	</style>
 </head>
+
 <body>
-	
 
-    <form th:action="@{/poke_damage}" method="POST">
-        <div class="card1" style="width: 30rem;">
-            <input type="text" name="Poke_name1" class="I_1" id="Poke_name1" /><br>
-                 <img id="myImage1" src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg" class="P_images" alt="ポケモン1">
-           
-            <div class="card-body">
-                <h5 class="card-title">攻撃側</h5>
-                 <th:block th:each="result:${selectResult1}">
-                       名前<p id="name1" th:text="${result.name}"></p>
-                       タイプ1<p th:text="${result.type1}"></p>
-                       タイプ2<p th:text="${result.type2}"></p>
-                       体力<p th:text="${result.Hp}"></p>
-                       攻撃<p th:text="${result.Atk}"></p>
-                       防御<p th:text="${result.Def}"></p>
-                       特攻<p th:text="${result.Satk}"></p>
-                       特防<p th:text="${result.Sdef}"></p>
-                       素早さ<p th:text="${result.Spd}"></p>
 
-                    </th:block>
-                <p class="card-text">
-                   
-                </p>
-                <script>
-		 function switchImage(){
-			var img1=document.getElementById("Poke_name1").value;
-			if(img1=="ヒトカゲ"){
-				document.getElementById("myImage1").src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/89953014f442146518ef45787d9bb0a4.png";
-			}
-		}
-		
-	</script>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
+	<form th:action="@{/poke_damage}" method="POST">
+		<div class="card1" style="width: 30rem;">
+			<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" /><br>
+			<img id="myImage1"
+				src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg"
+				class="P_images" alt="ポケモン1">
 
-        <div class="card2" style="width: 30rem;">
-            <input type="text" name="Poke_name2" class="I_2"id="Poke_name2" /><br>
-            <img id="myImage2" src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg" class="P_images" alt="ポケモン2">
-            <div class="card-body">
-                <h5 class="card-title">守備側</h5>
-					<th:block th:each="result:${selectResult2}">
-                       名前<p th:text="${result.name}"></p>
-                       タイプ1<p th:text="${result.type1}"></p>
-                       タイプ2<p th:text="${result.type2}"></p>
-                       体力<p th:text="${result.Hp}"></p>
-                       攻撃<p th:text="${result.Atk}"></p>
-                       防御<p th:text="${result.Def}"></p>
-                       特攻<p th:text="${result.Satk}"></p>
-                       特防<p th:text="${result.Sdef}"></p>
-                       素早さ<p th:text="${result.Spd}"></p>
-					 </th:block>
-                <p class="card-text">
-                     
-                </p>
-                <a href="#" class="btn btn-primary">Go somewhere</a>
-            </div>
-        </div>
-             <input type="submit"value="ステータス" class="Btn_so"/>
-    </form>
-   
-    		<div class="col-4">
-			概要<br>
-			攻撃側<p id="PNAME1" th:text="${name1}"></p>
-    		守備側<p id="PNAME2" th:text="${name2}"></p>
+			<div class="card-body">
+				<h5 class="card-title">攻撃側</h5>
+				<th:block th:each="result:${selectResult1}">
+					名前<p id="name1" th:text="${result.name}"></p>
+					タイプ1<p th:text="${result.type1}" name="type1"></p>
+					タイプ2<p th:text="${result.type2}" name="type2"></p>
+					体力<p th:text="${result.Hp}" name="hp1"></p>
+					攻撃<p th:text="${result.Atk}" name="atk1"></p>
+					防御<p th:text="${result.Def}" name="def1"></p>
+					特攻<p th:text="${result.Satk}" name="satk1"></p>
+					特防<p th:text="${result.Sdef}" name="sdef1"></p>
+					素早さ<p th:text="${result.Spd}" name="spd1"></p>
+
+				</th:block>
+				<p class="card-text">
+
+				</p>
+				<script>
+					function switchImage() {
+						var img1 = document.getElementById("Poke_name1").value;
+						if (img1 == "ヒトカゲ") {
+							document.getElementById("myImage1").src = "https://zukan.pokemon.co.jp/zukan-api/up/images/index/89953014f442146518ef45787d9bb0a4.png";
+						}
+					}
+
+					async function kazuki() {
+						alert('aaaa');
+						const res = fetch("http://localhost:8080/poke_damage");
+						
+					}
+
+				</script>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
 		</div>
-                <input onclick="switchImage()" type="button"value="画像表示" class="Btn_so"/>
-     <script>
-		 const p = document.querySelector('#PNAME1');
-		 const r = document.querySelector('#PNAME2');
 
-    // textContent確認
-   		
-		 function switchImage(){
+		<div class="card2" style="width: 30rem;">
+			<input type="text" name="Poke_name2" class="I_2" id="Poke_name2" /><br>
+			<img id="myImage2"
+				src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg"
+				class="P_images" alt="ポケモン2">
+			<div class="card-body">
+				<h5 class="card-title">守備側</h5>
+				<th:block th:each="result:${selectResult2}">
+					名前<p th:text="${result.name}" ></p>
+					タイプ1<p th:text="${result.type1}" name="type3"></p>
+					タイプ2<p th:text="${result.type2}" name="type4"></p>
+					体力<p th:text="${result.Hp}" name="hp2"></p>
+					攻撃<p th:text="${result.Atk}" name="atk2"></p>
+					防御<p th:text="${result.Def}" name="def2"></p>
+					特攻<p th:text="${result.Satk}" name="satk2"></p>
+					特防<p th:text="${result.Sdef}" name="sdef2"></p>
+					素早さ<p th:text="${result.Spd}" name="spd2"></p>
+				</th:block>
+				<p class="card-text">
 
-			if(p.textContent=="ヒトカゲ"){
-				document.getElementById("myImage1").src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/89953014f442146518ef45787d9bb0a4.png";
+				</p>
+				<a href="#" class="btn btn-primary">Go somewhere</a>
+			</div>
+		</div>
+		<input type="submit" value="ステータス" class="Btn_so" />
+	</form>
+	<input type="text" name="result" value="0" readonly>
+
+	<div class="col-4">
+		概要<br>
+		攻撃側<p id="PNAME1" th:text="${name1}"></p>
+		守備側<p id="PNAME2" th:text="${name2}"></p>
+	</div>
+	<input onclick="switchImage()" type="button" value="画像表示" class="Btn_so" /><br>
+	<a href="poke_login">ログイン</a>
+	<a href="poke_sinki">新規登録</a>
+	<script>
+		const p = document.querySelector('#PNAME1');
+		const r = document.querySelector('#PNAME2');
+		
+		//「NaN」が出されているからControllerからJavaScriptに直接値を持ってくるのを試す
+		const hp1=document.querySelector(parseInt("p[name=hp1]"));
+		const hp2=document.querySelector(parseInt("p[name=hp2]"));
+		const result=document.querySelector("input[name=result]");
+		result.value = Number(hp1.value) + Number(hp2.value);
+
+
+		// textContent確認
+
+		function switchImage() {
+
+			if (p.textContent == "ヒトカゲ") {
+				document.getElementById("myImage1").src = "https://zukan.pokemon.co.jp/zukan-api/up/images/index/89953014f442146518ef45787d9bb0a4.png";
 			}
-			if(r.textContent=="ゼニガメ"){
-				document.getElementById("myImage2").src="https://zukan.pokemon.co.jp/zukan-api/up/images/index/17388b7f608671656716ab509ee0fa05.png";
+			if (r.textContent == "ゼニガメ") {
+				document.getElementById("myImage2").src = "https://zukan.pokemon.co.jp/zukan-api/up/images/index/17388b7f608671656716ab509ee0fa05.png";
 			}
 		}
-		
+
 	</script>
-  
+
 </body>
+
 </html>
