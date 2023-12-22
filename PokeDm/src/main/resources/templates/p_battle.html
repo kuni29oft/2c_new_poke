@@ -39,8 +39,7 @@
 
 <body>
 
-
-	<form th:action="@{/poke_damage}" method="POST">
+	<button onclick="kazuki()">aaaa</button>
 		<div class="card1" style="width: 30rem;">
 			<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" /><br>
 			<img id="myImage1"
@@ -49,23 +48,32 @@
 
 			<div class="card-body">
 				<h5 class="card-title">攻撃側</h5>
-				<th:block th:each="result:${selectResult1}">
-					名前<p id="name1" th:text="${result.name}"></p>
-					タイプ1<p th:text="${result.type1}" name="type1"></p>
-					タイプ2<p th:text="${result.type2}" name="type2"></p>
-					体力<p th:text="${result.Hp}" name="hp1"></p>
-					攻撃<p th:text="${result.Atk}" name="atk1"></p>
-					防御<p th:text="${result.Def}" name="def1"></p>
-					特攻<p th:text="${result.Satk}" name="satk1"></p>
-					特防<p th:text="${result.Sdef}" name="sdef1"></p>
-					素早さ<p th:text="${result.Spd}" name="spd1"></p>
+		
+				
+				
+					名前<p id="name1" text="?"></p>
+					タイプ1<p id="type1" text="?"></p>
+					タイプ2<p id="type2" text="?"></p>
+					体力<p id="hp1" text="?"></p>
+					攻撃<p id="atk1" text="?"></p>
+					防御<p id="def1" text="?"></p>
+					特攻<p id="satk1" text="?"></p>
+					特防<p id="sdef1" text="?"></p>
+					素早さ<p id="spd1" text="?"></p>
 
-				</th:block>
+				
+				<select id="waza" name="waza">
+					<option value=160>10万ボルト</option>	
+					<option value="10001">---</option>	
+					<option value="りんご">---</option>	
+					<option value="メロン">---</option>	
+					<option value="バナナ">---</option>	
+				</select>
 				<p class="card-text">
 
 				</p>
 				<script>
-					function switchImage() {
+				function switchImage() {
 						var img1 = document.getElementById("Poke_name1").value;
 						if (img1 == "ヒトカゲ") {
 							document.getElementById("myImage1").src = "https://zukan.pokemon.co.jp/zukan-api/up/images/index/89953014f442146518ef45787d9bb0a4.png";
@@ -73,34 +81,76 @@
 					}
 
 					async function kazuki() {
-						alert('aaaa');
-						const res = fetch("http://localhost:8080/poke_damage");
+						var p = document.getElementById("Poke_name1").value;
+						var r = document.getElementById("Poke_name2").value;
+
+						const result = fetch("http://localhost:8080/pokepoke/" + p + "/" + r);
+										result.then((response) => response.json())
+										.then((info) => dispUpd(info))
 						
+						const parsed = JSON.parse(response);
+						console.log(parse)
+						console.log(parsed.name);
+					
 					}
 
+
+				function dispUpd(info){
+					let i=document.getElementById("waza");
+					parseInt(i.value);
+					
+					var result = document.querySelector("input[name=result]");
+			//ERRORを直した後に表示できるか実験
+					
+					document.getElementById("name1").innerText = info[0].name;
+					document.getElementById("type1").innerText = info[0].type1;
+					document.getElementById("type2").innerText = info[0].type2;
+					document.getElementById("hp1").innerText = parseInt(info[0].Hp);
+					document.getElementById("atk1").innerText = info[0].Atk;
+					document.getElementById("def1").innerText = info[0].Def;
+					document.getElementById("satk1").innerText = info[0].Satk;
+					document.getElementById("sdef1").innerText = info[0].Sdef;
+					document.getElementById("spd1").innerText = info[0].Spd;
+					
+					document.getElementById("name2").innerText = info[1].name;
+					document.getElementById("type3").innerText = info[1].type1;
+					document.getElementById("type4").innerText = info[1].type2;
+					document.getElementById("hp2").innerText = info[1].Hp;
+					document.getElementById("atk2").innerText = info[1].Atk;
+					document.getElementById("def2").innerText = info[1].Def;
+					document.getElementById("satk2").innerText = info[1].Satk;
+					document.getElementById("sdef2").innerText = info[1].Sdef;
+					document.getElementById("spd2").innerText = info[1].Spd;
+					
+					
+					result.value = Number(info[0].Hp) + Number(i.value);
+
+					
+					
+				}
 				</script>
 				<a href="#" class="btn btn-primary">Go somewhere</a>
 			</div>
 		</div>
 
 		<div class="card2" style="width: 30rem;">
-			<input type="text" name="Poke_name2" class="I_2" id="Poke_name2" /><br>
+			<input type="text" name="Poke_name2" onChange="kazuki()" class="I_2" id="Poke_name2" /><br>
 			<img id="myImage2"
 				src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg"
 				class="P_images" alt="ポケモン2">
 			<div class="card-body">
 				<h5 class="card-title">守備側</h5>
-				<th:block th:each="result:${selectResult2}">
-					名前<p th:text="${result.name}" ></p>
-					タイプ1<p th:text="${result.type1}" name="type3"></p>
-					タイプ2<p th:text="${result.type2}" name="type4"></p>
-					体力<p th:text="${result.Hp}" name="hp2"></p>
-					攻撃<p th:text="${result.Atk}" name="atk2"></p>
-					防御<p th:text="${result.Def}" name="def2"></p>
-					特攻<p th:text="${result.Satk}" name="satk2"></p>
-					特防<p th:text="${result.Sdef}" name="sdef2"></p>
-					素早さ<p th:text="${result.Spd}" name="spd2"></p>
-				</th:block>
+				
+					名前<p id="name2" text="?"></p>
+					タイプ1<p id="type3" text="?"></p>
+					タイプ2<p id="type4" text="?"></p>
+					体力<p id="hp2" text="?"></p>
+					攻撃<p id="atk2" text="?"></p>
+					防御<p id="def2" text="?"></p>
+					特攻<p id="satk2" text="?"></p>
+					特防<p id="sdef2" text="?"></p>
+					素早さ<p id="spd2" text="?"></p>
+				
 				<p class="card-text">
 
 				</p>
@@ -108,8 +158,25 @@
 			</div>
 		</div>
 		<input type="submit" value="ステータス" class="Btn_so" />
-	</form>
-	<input type="text" name="result" value="0" readonly>
+
+		<input type="text" name="result" value="0" readonly>
+		<script>
+
+
+
+			//「NaN」が出されているからControllerからJavaScriptに直接値を持ってくるのを試す
+			var Ohp = document.getElementById("hp1");
+			var Dhp = document.getElementById("hp2");
+			//parseInt(Ohp.innerText);
+			//parseInt(Dhp.innerText);
+			var result = document.querySelector("input[name=result]");
+			//ERRORを直した後に表示できるか実験
+			result.value = Number(Ohp.innerText) + Number(Dhp.innerText);
+
+
+		</script>
+
+	
 
 	<div class="col-4">
 		概要<br>
@@ -119,19 +186,13 @@
 	<input onclick="switchImage()" type="button" value="画像表示" class="Btn_so" /><br>
 	<a href="poke_login">ログイン</a>
 	<a href="poke_sinki">新規登録</a>
+	<a href="poke_Ai">AI</a>
 	<script>
-		const p = document.querySelector('#PNAME1');
-		const r = document.querySelector('#PNAME2');
-		
-		//「NaN」が出されているからControllerからJavaScriptに直接値を持ってくるのを試す
-		const hp1=document.querySelector(parseInt("p[name=hp1]"));
-		const hp2=document.querySelector(parseInt("p[name=hp2]"));
-		const result=document.querySelector("input[name=result]");
-		result.value = Number(hp1.value) + Number(hp2.value);
-
 
 		// textContent確認
 
+		var p = document.querySelector('#PNAME1');
+		var r = document.querySelector('#PNAME2');
 		function switchImage() {
 
 			if (p.textContent == "ヒトカゲ") {
@@ -141,6 +202,10 @@
 				document.getElementById("myImage2").src = "https://zukan.pokemon.co.jp/zukan-api/up/images/index/17388b7f608671656716ab509ee0fa05.png";
 			}
 		}
+
+
+
+
 
 	</script>
 
