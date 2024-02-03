@@ -94,6 +94,7 @@
 			<p><input type="text" id="Poke_prompt"></p>	
 			
 			<button onclick="second()">生成</button>
+			<button onclick="third()">画像</button>
 		
 		
 			
@@ -123,6 +124,15 @@
 					
 					document.getElementById("myImage1").src = info.imageUrl;
 		}
+		
+			async function third(){
+				var image=document.getElementById("myImage1");
+				console.log(image.src);
+				const result = fetch("/poke_Ai_Insert/" + image.src);
+				result.then((response) => response.json())
+					.then((info) => dispUpd(info))
+				//2月2日の俺へ。srcのところでエラーあり。待機させるなどの処理を行い変数として取得せよ
+			}
 		
 		</script>
 		
