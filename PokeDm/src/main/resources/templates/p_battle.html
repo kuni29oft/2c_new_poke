@@ -102,21 +102,16 @@
 		</div>
 
 				<script>
+					
+						
 
 				async function kazuki() {
-						var p = document.getElementById("Poke_name1").value;
-						var r = document.getElementById("Poke_name2").value;
-
-						const result = fetch("/pokepoke/" + p + "/" + r);
+					var p = document.getElementById("Poke_name1").value;
+					var r = document.getElementById("Poke_name2").value;
+								const result = fetch("/poke_true/" + p + "/" + r);
 										result.then((response) => response.json())
 										.then((info) => dispUpd(info))
-						
-						const parsed = JSON.parse(response);
-						console.log(parse)
-						console.log(parsed.name);
-					
-					}
-
+							}
 
 				function dispUpd(info){
 					let i=document.getElementById("waza");
@@ -150,6 +145,7 @@
 					
 					
 				}
+				
 				</script>
 			
 

@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -17,16 +18,19 @@ public class KazukiController {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	
-	@RequestMapping(path="/pokepoke/{poke1}/{poke2}",method=RequestMethod.GET)
+	@RequestMapping(path="/poke_true/{poke1}/{poke2}",method=RequestMethod.GET)
 	public List<Map<String,Object>> battle(@PathVariable String poke1 ,@PathVariable String poke2,Model model) {
-		
-		
-//		List<Map<String,Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM テーブル名 WHERE poke_name = ?",poke1);
-		
-		List<Map<String,Object>> resultList = jdbcTemplate.queryForList("SELECT * FROM demo WHERE name IN (?,?)",poke1,poke2);
-		
-		
-		return resultList ;
+	
+		List<Map<String,Object>> resultList1=jdbcTemplate.queryForList("select * from demo where name =?",poke1);
+		List<Map<String,Object>> resultList2=jdbcTemplate.queryForList("select * from demo where name=? ",poke2);
+		List<Map<String, Object>> resultList3 = new ArrayList<>(resultList1);
+		resultList3.addAll(resultList2);
+		return resultList3;
 		
 	}
-}
+	
+	
+			
+	
+		
+	}
