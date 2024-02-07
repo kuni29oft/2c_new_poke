@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	
+	<div class="col-4">
+		概要<br>
+		攻撃側<p id="PNAME1" th:text="${name1}"></p>
+		守備側<p id="PNAME2" th:text="${name2}"></p>
+	</div>
+	//DBdemoに対してformを利用し2つの変数を送る
+	<form action="DBdemo" method="post">
+		<input type="hidden" name="name1" value="name1">
+		<input type="hidden" name="name2" value="name2">
+		<input type="submit" value="送信">
+		</form>
+<!--	<a href="poke_login">ログイン</a>-->
+<!--	<a href="poke_sinki">新規登録</a>-->
+<!--	<a href="poke_Ai">AI</a>-->
+	
+	
+	
+	
+
+</body>
+</html>

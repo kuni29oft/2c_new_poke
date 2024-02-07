@@ -35,8 +35,8 @@ public class P_search_controller {
 		@RequestMapping(path = "/P_search", method = RequestMethod.POST)
 		public String P_serch_post(String user_id, String user_pass, String user_name, Model model) {
 
-//			jdbcTemplate.update("INSERT INTO users (user_id,user_pass,user_name,user_image) VALUES(?,?,?,?);", user_id,
-//					user_pass, user_name, "");
+			jdbcTemplate.update("INSERT INTO users (user_id,user_pass,user_name,user_image) VALUES(?,?,?,?);", user_id,
+					user_pass, user_name, "");
 			
 			
 			
