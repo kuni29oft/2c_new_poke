@@ -91,12 +91,10 @@
 		<a href="poke_login">ログイン</a>
 		<a href="poke_damage">ダメージ計算</a>
 		
-			<p><input type="text" id="Poke_prompt"></p>	
+			<p><input type="text" id="Poke_prompt"></p>	<button onclick="second()">生成</button><button onclick="third()">保存</button>
+			<p><input type="text" id="Poke_prompt"></p>	<button onclick="serch()">検索</button><br>
 			
-			<button onclick="second()">生成</button>
-			<button onclick="third()">画像</button>
-		
-		
+			
 			
 		
 		
@@ -116,22 +114,30 @@
 						const result = fetch("/poke_Ai_generate/" + p );
 										result.then((response) => response.json())
 										.then((info) => dispUpd(info))
-					}
+									}
 					
 					
 				function dispUpd(info){
 					console.log(info);
 					
 					document.getElementById("myImage1").src = info.imageUrl;
-		}
+										}
 		
 			async function third(){
 				var image=document.getElementById("myImage1");
-				console.log(image.src);
-				const result = fetch("/poke_Ai_Insert/" + image.src);
-				result.then((response) => response.json())
-					.then((info) => dispUpd(info))
+				var x=image.src;
+				//image.srcをstringに変えろ
+				console.log(x);
+				
+				const result1 = fetch("/poke_Ai_Insert/" + x);
+				result1.then((response) => response.json())
+					.then((info) => dispIns(info))
 				//2月2日の俺へ。srcのところでエラーあり。待機させるなどの処理を行い変数として取得せよ
+			}
+			
+			function dispIns(info){
+				console.log(info);
+				alert(info);
 			}
 		
 		</script>

@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<style>
+		.card1 {
+			float: left;
+			padding-top: 15px;
+			padding-left: 100px;
+		}
+
+		.card2 {
+			float: left;
+			padding-top: 15px;
+			padding-right: 100px;
+		}
+
+		.col-4 {
+			float: right;
+		}
+
+		.Btn_so {
+			width: 200px;
+			height: 50px;
+			margin: 30px;
+
+		}
+
+		.P_images {
+			width: 100px;
+			height: 100px;
+		}
+	</style>
+</head>
+
+<body>
+	
+	<form th:action="@{/poke_damage}" method="POST">
+		<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" />
+		<input type="text" name="Poke_name2"  class="I_2" id="Poke_name2" />
+			<select id="waza" name="waza">
+					<option value=null>技</option>	
+					<option value="アームハンマー">アームハンマー</option>	
+					<option value="1080">あくのはどう</option>	
+					<option value="メロン">---</option>	
+					<option value="バナナ">---</option>	
+			</select>
+		<p><input type="submit" value="計算"></p>
+	</form>
+		<div class="card1" style="width: 30rem;">
+			
+		
+
+		<div class="card-body">
+				<h5 class="card-title">攻撃側</h5>
+			
+				
+				<th:block th:each="reslt1 :${selectPoke1}">
+					名前<p th:text="${reslt1.jname}"></p>
+					タイプ1<p th:text="${reslt1.types1}"></p>
+					タイプ2<p th:text="${reslt1.types2}"></p>
+					体力<p th:text="${reslt1.hp}"></p>
+					攻撃<p th:text="${reslt1.atk}"></p>
+					防御<p th:text="${reslt1.defense}"></p>
+					特攻<p th:text="${reslt1.satk}"></p>
+					特防<p th:text="${reslt1.sdef}"></p>
+					素早さ<p th:text="${reslt1.sp}"></p>
+					身長<p th:text="${reslt1.height}"></p>
+					重さ<p th:text="${reslt1.weight}"></p>
+				</th:block>
+				
+					
+
+				
+				
+				<p class="card-text">
+					
+
+				</p>
+						
+					<select id="waza" name="waza">
+					<option value=160>技</option>	
+					<option value="10001">---</option>	
+					<option value="りんご">---</option>	
+					<option value="メロン">---</option>	
+					<option value="バナナ">---</option>	
+				</select>
+			</div>
+		</div>
+
+		<div class="card2" style="width: 30rem;">
+			
+			<div class="card-body">
+				<h5 class="card-title">守備側</h5>
+				<input type="checkbox" name="programming7" value="hp2">体力
+				<input type="checkbox" name="programming8" value="def2">防御
+				<input type="checkbox" name="programming9" value="sdef2">特防<br>
+				
+					<th:block th:each="reslt2 :${selectPoke2}">
+						名前<p th:text="${reslt2.jname}"></p>
+						タイプ1<p th:text="${reslt2.types1}"></p>
+						タイプ2<p th:text="${reslt2.types2}"></p>
+						体力<p th:text="${reslt2.hp}"></p>
+						攻撃<p th:text="${reslt2.atk}"></p>
+						防御<p th:text="${reslt2.defense}"></p>
+						特攻<p th:text="${reslt2.satk}"></p>
+						特防<p th:text="${reslt2.sdef}"></p>
+						素早さ<p th:text="${reslt2.sp}"></p>
+						身長<p th:text="${reslt2.height}"></p>
+						重さ<p th:text="${reslt2.weight}"></p>
+					</th:block>
+				
+				<p class="card-text">
+
+				</p>
+					<select id="waza" name="terasu">
+					<option value=160>テラスタル</option>	
+					<option value="10001">---</option>	
+					<option value="りんご">---</option>	
+					<option value="メロン">---</option>	
+					<option value="バナナ">---</option>	
+				</select>
+			</div>
+		</div>
+		
+				<script>
+					
+						
+
+				async function kazuki() {
+					var p = document.getElementById("Poke_name1").value;
+					var r = document.getElementById("Poke_name2").value;
+								const result = fetch("/poke_true/" + p + "/" + r);
+										result.then((response) => response.json())
+										.then((info) => dispUpd(info))
+							}
+
+				function dispUpd(info){
+					let i=document.getElementById("waza");
+					parseInt(i.value);
+					
+					var result = document.querySelector("input[name=result]");
+		
+					document.getElementById("name1").innerText = info[0].name;
+					document.getElementById("type1").innerText = info[0].type1;
+					document.getElementById("type2").innerText = info[0].type2;
+					document.getElementById("hp1").innerText = parseInt(info[0].Hp);
+					document.getElementById("atk1").innerText = info[0].Atk;
+					document.getElementById("def1").innerText = info[0].Def;
+					document.getElementById("satk1").innerText = info[0].Satk;
+					document.getElementById("sdef1").innerText = info[0].Sdef;
+					document.getElementById("spd1").innerText = info[0].Spd;
+					
+					document.getElementById("name2").innerText = info[1].name;
+					document.getElementById("type3").innerText = info[1].type1;
+					document.getElementById("type4").innerText = info[1].type2;
+					document.getElementById("hp2").innerText = info[1].Hp;
+					document.getElementById("atk2").innerText = info[1].Atk;
+					document.getElementById("def2").innerText = info[1].Def;
+					document.getElementById("satk2").innerText = info[1].Satk;
+					document.getElementById("sdef2").innerText = info[1].Sdef;
+					document.getElementById("spd2").innerText = info[1].Spd;
+					
+					
+					result.value = Number(info[0].Hp) + Number(i.value);
+
+					
+					
+				}
+				
+				</script>
+			
+
+				<input type="text" name="result" value="0" readonly>
+		
+	<a href="poke_login">ログイン</a>
+	<a href="poke_sinki">新規登録</a>
+	<a href="poke_Ai">AI</a>
+	
+</body>
+
+</html>

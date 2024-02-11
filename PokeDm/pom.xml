@@ -5,19 +5,22 @@
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>3.1.5</version>
+		<version>3.2.2</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.example</groupId>
-	<artifactId>PokeDm</artifactId>
+	<artifactId>MyExampleList</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>PokeDm</name>
+	<name>MyExampleList</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
-	    <maven.test.skip>true</maven.test.skip>
+		<java.version>21</java.version>
 	</properties>
 	<dependencies>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-thymeleaf</artifactId>
@@ -43,23 +46,25 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
-		
-					<dependency>
-		  <groupId>mysql</groupId>
-		  <artifactId>mysql-connector-java</artifactId>
-		  <scope>runtime</scope>
-		  <version>8.0.23</version>
+				<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<scope>runtime</scope>
+			<version>8.0.23</version>
 		</dependency>
 		<dependency>
-		  <groupId>org.springframework.boot</groupId>
-		  <artifactId>spring-boot-starter-data-jdbc</artifactId>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-jdbc</artifactId>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/org.json/json -->
-<dependency>
+		
+			
+		
+		<dependency>
     <groupId>org.json</groupId>
     <artifactId>json</artifactId>
     <version>20230227</version>
 </dependency>
+
 
 	</dependencies>
 

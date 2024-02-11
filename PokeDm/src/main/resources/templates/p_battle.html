@@ -40,16 +40,27 @@
 <body>
 
 	<button onclick="kazuki()">aaaa</button>
+	
 		<div class="card1" style="width: 30rem;">
 			<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" /><br>
+			
+				
 			<img id="myImage1"
 				src="https://www.pokemoncenter-online.com/static/product_image/4521329278285/4521329278285_04.jpg"
 				class="P_images" alt="ポケモン1">
 
 			<div class="card-body">
 				<h5 class="card-title">攻撃側</h5>
-		
+					<input type="checkbox" name="programming1" value="hp1">体力
+				<input type="checkbox" name="programming2" value="atk1">攻撃
+				<input type="checkbox" name="programming3" value="def1">防御
+				<input type="checkbox" name="programming4" value="satk1">特攻
+				<input type="checkbox" name="programming5" value="sdef1">特防
+				<input type="checkbox" name="programming6" value="spd1">素早さ<br>
 				
+				<input type="radio"name="terasu"value="normal">テラスタルなし<br>
+				<input type="radio"name="terasu"value="terasu">テラスタルあり<br>
+				<input type="radio"name="terasu"value="sutera">ステラ<br>
 				
 					名前<p id="name1" text="?"></p>
 					タイプ1<p id="type1" text="?"></p>
@@ -62,17 +73,18 @@
 					素早さ<p id="spd1" text="?"></p>
 
 				
-				<select id="waza" name="waza">
-					<option value=160>このプルダウンは技を全件入れるかもしれないと思って作った</option>	
+				
+				<p class="card-text">
+
+				</p>
+						<a href="#" class="btn btn-primary">Go somewhere</a>
+						<select id="waza" name="waza">
+					<option value=160>技</option>	
 					<option value="10001">---</option>	
 					<option value="りんご">---</option>	
 					<option value="メロン">---</option>	
 					<option value="バナナ">---</option>	
 				</select>
-				<p class="card-text">
-
-				</p>
-						<a href="#" class="btn btn-primary">Go somewhere</a>
 			</div>
 		</div>
 
