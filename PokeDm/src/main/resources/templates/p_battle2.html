@@ -14,7 +14,7 @@
 		}
 
 		.card2 {
-			float: left;
+			float: right;
 			padding-top: 15px;
 			padding-right: 100px;
 		}
@@ -34,21 +34,86 @@
 			width: 100px;
 			height: 100px;
 		}
+		body, h1, p {
+margin: 0;
+padding: 0;
+}
+
+h1 {
+color: #ffffff;
+}
+
+h2 {
+color: #339933;
+}
+
+p {
+line-height: 2em;
+}
+
+p.hl {
+font-size: 1.25em;
+color: #ffffff;
+}
+
+header, div#main, div#waza, footer {
+padding: 8px;
+}
+
+header {
+background-color: #339933;
+}
+
+div#content {
+width: 760px;
+overflow: hidden;
+}
+
+div#main {
+background-color: #ffffff;
+width: 584px;
+float: right;
+}
+
+div#waza {
+color: #339933;
+background-color: #ffffff;
+width: 144px;
+float: left;
+}
+
+nav a:link {
+color: #ffffff;
+}
+
+nav a:visited {
+color: #ccffcc;
+}
+
+nav a:hover {
+color: #339933;
+}
+
+nav li {
+line-height: 2em;
+}
+
+footer {
+color: #ffffff;
+background-color: #339933;
+}
 	</style>
 </head>
 
 <body>
-	
+	<div id="content">
+		<div id="main">
 	<form th:action="@{/poke_damage}" method="POST">
 		<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" />
 		<input type="text" name="Poke_name2"  class="I_2" id="Poke_name2" />
-			<select id="waza" name="waza">
-					<option value=null>技</option>	
-					<option value="アームハンマー">アームハンマー</option>	
-					<option value="1080">あくのはどう</option>	
-					<option value="メロン">---</option>	
-					<option value="バナナ">---</option>	
-			</select>
+		<input type="text" name="waza"  class="I_3" id="Poke_name3" />
+			
+			
 		<p><input type="submit" value="計算"></p>
 	</form>
 		<div class="card1" style="width: 30rem;">
@@ -74,21 +139,8 @@
 				</th:block>
 				
 					
-
-				
-				
-				<p class="card-text">
-					
-
-				</p>
 						
-					<select id="waza" name="waza">
-					<option value=160>技</option>	
-					<option value="10001">---</option>	
-					<option value="りんご">---</option>	
-					<option value="メロン">---</option>	
-					<option value="バナナ">---</option>	
-				</select>
+					
 			</div>
 		</div>
 
@@ -115,8 +167,11 @@
 					</th:block>
 				
 				<p class="card-text">
-
 				</p>
+				
+				<p th:text="${damage}"></p>
+				
+				
 					<select id="waza" name="terasu">
 					<option value=160>テラスタル</option>	
 					<option value="10001">---</option>	
@@ -127,52 +182,6 @@
 			</div>
 		</div>
 		
-				<script>
-					
-						
-
-				async function kazuki() {
-					var p = document.getElementById("Poke_name1").value;
-					var r = document.getElementById("Poke_name2").value;
-								const result = fetch("/poke_true/" + p + "/" + r);
-										result.then((response) => response.json())
-										.then((info) => dispUpd(info))
-							}
-
-				function dispUpd(info){
-					let i=document.getElementById("waza");
-					parseInt(i.value);
-					
-					var result = document.querySelector("input[name=result]");
-		
-					document.getElementById("name1").innerText = info[0].name;
-					document.getElementById("type1").innerText = info[0].type1;
-					document.getElementById("type2").innerText = info[0].type2;
-					document.getElementById("hp1").innerText = parseInt(info[0].Hp);
-					document.getElementById("atk1").innerText = info[0].Atk;
-					document.getElementById("def1").innerText = info[0].Def;
-					document.getElementById("satk1").innerText = info[0].Satk;
-					document.getElementById("sdef1").innerText = info[0].Sdef;
-					document.getElementById("spd1").innerText = info[0].Spd;
-					
-					document.getElementById("name2").innerText = info[1].name;
-					document.getElementById("type3").innerText = info[1].type1;
-					document.getElementById("type4").innerText = info[1].type2;
-					document.getElementById("hp2").innerText = info[1].Hp;
-					document.getElementById("atk2").innerText = info[1].Atk;
-					document.getElementById("def2").innerText = info[1].Def;
-					document.getElementById("satk2").innerText = info[1].Satk;
-					document.getElementById("sdef2").innerText = info[1].Sdef;
-					document.getElementById("spd2").innerText = info[1].Spd;
-					
-					
-					result.value = Number(info[0].Hp) + Number(i.value);
-
-					
-					
-				}
-				
-				</script>
 			
 
 				<input type="text" name="result" value="0" readonly>
@@ -180,7 +189,16 @@
 	<a href="poke_login">ログイン</a>
 	<a href="poke_sinki">新規登録</a>
 	<a href="poke_Ai">AI</a>
-	
+		</div>
+	<div id="waza">
+		<h2>技リスト</h2>
+				<th:block th:each="reslt3 :${selectPoke3}">
+						
+						<p th:text="${reslt3.name}"></p>
+						
+					</th:block>
+					</div>
+	</div>
 </body>
 
 </html>

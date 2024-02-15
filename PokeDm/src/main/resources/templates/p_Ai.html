@@ -91,13 +91,16 @@
 		<a href="poke_login">ログイン</a>
 		<a href="poke_damage">ダメージ計算</a>
 		
-			<p><input type="text" id="Poke_prompt"></p>	<button onclick="second()">生成</button><button onclick="third()">保存</button>
-			<p><input type="text" id="Poke_prompt"></p>	<button onclick="serch()">検索</button><br>
+			<p><input type="text" id="Poke_prompt"></p>	<button onclick="second()">生成</button>
+			<form th:action="@{/poke_Ai_Insert}" method="POST">
+				<input type="hidden" id="Poke_image" name="Poke_image">
+				<input type="submit" value="保存">
+			</form>
+			<form action="@{/poke_AI_select}" method="POST">
+				<p><input type="text" id="Poke_prompt"></p>
+				<input type="submit" value="検索">	
+			</form>
 			
-			
-			
-		
-		
 		
 		<img id="myImage1"
 				src=""
@@ -121,6 +124,7 @@
 					console.log(info);
 					
 					document.getElementById("myImage1").src = info.imageUrl;
+					document.getElementById("Poke_image").value = info.imageUrl;
 										}
 		
 			async function third(){
@@ -128,16 +132,16 @@
 				var x=image.src;
 				//image.srcをstringに変えろ
 				console.log(x);
-				
-				const result1 = fetch("/poke_Ai_Insert/" + x);
+				var sample="https://images.prodia.xyz/4c0ac70e-7b76-4b9c-8357-6f24d545429c.png";
+				const result1 = fetch("/poke_Ai_Insert/" + sample);
 				result1.then((response) => response.json())
-					.then((info) => dispIns(info))
-				//2月2日の俺へ。srcのところでエラーあり。待機させるなどの処理を行い変数として取得せよ
+					.then((info) => dispIns(info1))
+				
 			}
 			
-			function dispIns(info){
-				console.log(info);
-				alert(info);
+			function dispIns(info1){
+				console.log(info1);
+				alert(info1);
 			}
 		
 		</script>

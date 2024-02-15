@@ -1,4 +1,4 @@
-package com.example.demo.bean;
+/*package com.example.demo.bean;
 
 
 public class SendData {
@@ -118,3 +118,4 @@ public class SendData {
 	}
 
 }
+*/
