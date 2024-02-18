@@ -9,74 +9,18 @@
 	<title>Insert title here</title>
 	
 	<style>
-		.login-triangle {
-			width: 0;
-			margin-right: auto;
-			margin-left: auto;
-			border: 12px solid transparent;
-			border-bottom-color: #28d;
-		}
-
-		.login-header {
-			background: #28d;
-			padding: 20px;
-			font-size: 1.4em;
-			font-weight: normal;
-			text-align: center;
-			text-transform: uppercase;
-			color: #fff;
-		}
-
-		.login-container {
-			background: #ebebeb;
-			padding: 12px;
-		}
-
-		/* Every row inside .login-container is defined with p tags */
-		.login p {
-			padding: 12px;
-		}
-
-		.login input {
-			box-sizing: border-box;
-			display: block;
-			width: 100%;
-			border-width: 1px;
-			border-style: solid;
-			padding: 16px;
-			outline: 0;
-			font-family: inherit;
-			font-size: 0.95em;
-		}
-
-		.login input[type="email"],
-		.login input[type="password"] {
-			background: #fff;
-			border-color: #bbb;
-			color: #555;
-		}
-
-		/* Text fields' focus effect */
-		.login input[type="email"]:focus,
-		.login input[type="password"]:focus {
-			border-color: #888;
-		}
-
-		.login input[type="submit"] {
-			background: #28d;
-			border-color: transparent;
-			color: #fff;
-			cursor: pointer;
-		}
-
-		.login input[type="submit"]:hover {
-			background: #17c;
-		}
-
-		/* Buttons' focus effect */
-		.login input[type="submit"]:focus {
-			border-color: #05a;
-		}
+		
+		.box {
+  				width: 200px;                /* 横幅を200pxに指定 */
+  				height: 500px;               /* 横幅を200pxに指定 */
+ 				 border: 1px solid #000;      /* わかりやすくボーダーを引く */
+ 				 overflow-y: scroll;          /* 縦方向にスクロール可能にする */
+ 				 float: right;
+				}
+		.P_images{
+			float: right;
+			      
+	}
 	</style>
 </head>
 
@@ -87,26 +31,67 @@
 
 		<h2 class="login-header">AI</h2>
 
+		<div class="box">
+ 			<h2>リスト</h2>
+				<th:block th:each="reslt3 :${AI_list}">
+						
+						<p th:text="${reslt3.jname}"></p>
+						
+					</th:block>
+					</div>
 		
 		<a href="poke_login">ログイン</a>
 		<a href="poke_damage">ダメージ計算</a>
 		
-			<p><input type="text" id="Poke_prompt"></p>	<button onclick="second()">生成</button>
-			<form th:action="@{/poke_Ai_Insert}" method="POST">
-				<input type="hidden" id="Poke_image" name="Poke_image">
-				<input type="submit" value="保存">
-			</form>
-			<form action="@{/poke_AI_select}" method="POST">
-				<p><input type="text" id="Poke_prompt"></p>
-				<input type="submit" value="検索">	
-			</form>
-			
-		
-		<img id="myImage1"
+		<h2>オリジナルポケモン生成</h2>
+			<p><input type="text" id="Poke_prompt"></p>
+				<button onclick="second()">生成</button>
+				
+				<img id="myImage1"
 				src=""
 				class="P_images" alt="ポケモン1">
+			
+ 			
+			<p th:text="${message}" class="kekka"></p>
+			
+			<h2>ポケモン登録</h2>
+			<form th:action="@{/poke_Ai/Insert}" method="POST">
+				<input type="hidden" id="Poke_image" name="Poke_image">
+				name<input type="text" id="Poke_name" name="Poke_name"><br>
+				タイプ1<input type="text" id="type1" name="type1"><br>
+				タイプ2<input type="text" id="type2" name="type2"><br>
+				HP<input type="text" id="hp" name="hp"><br>
+				ATK<input type="text" id="atk" name="atk"><br>
+				DEF<input type="text" id="def" name="def"><br>
+				SATK<input type="text" id="satk" name="satk"><br>
+				SDEF<input type="text" id="sdef" name="sdef"><br>
+				SPEED<input type="text" id="sp" name="sp"><br>
+				高さ<input type="text" id="height" name="height"><br>
+				重さ<input type="text" id="weight" name="weight"><br>
+				<input type="submit" value="保存"><br>
+			</form>
+			
+			
+				
+				<h2>ポケモン検索</h2>
+				<form th:action="@{/poke_Ai_select}" method="POST">
+					
+					<p><input type="text" name="Poke_select"id="Poke_select"></p>
+				<select id="sel" name="button">
+					<option value="AI">AI</option>	
+					<option value="ノーマル">既存ポケモン</option>		
+				</select>
+					<input type="submit" value="検索">
+		            
+				</form>
+				
+				<img th:src="${select_id}" class="kekka"></img>
+		
+		
 		<hr>
-		<div id="result"></div>
+		<div id="result">
+			</div>
+			
 		
 		<script>
 			async function second() {
@@ -127,22 +112,7 @@
 					document.getElementById("Poke_image").value = info.imageUrl;
 										}
 		
-			async function third(){
-				var image=document.getElementById("myImage1");
-				var x=image.src;
-				//image.srcをstringに変えろ
-				console.log(x);
-				var sample="https://images.prodia.xyz/4c0ac70e-7b76-4b9c-8357-6f24d545429c.png";
-				const result1 = fetch("/poke_Ai_Insert/" + sample);
-				result1.then((response) => response.json())
-					.then((info) => dispIns(info1))
-				
-			}
-			
-			function dispIns(info1){
-				console.log(info1);
-				alert(info1);
-			}
+		
 		
 		</script>
 		

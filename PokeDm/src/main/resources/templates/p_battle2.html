@@ -7,14 +7,14 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<style>
-		.card1 {
+.card1 {
 			float: left;
 			padding-top: 15px;
 			padding-left: 100px;
 		}
 
 		.card2 {
-			float: right;
+			float: left;
 			padding-top: 15px;
 			padding-right: 100px;
 		}
@@ -34,74 +34,24 @@
 			width: 100px;
 			height: 100px;
 		}
-		body, h1, p {
-margin: 0;
-padding: 0;
-}
+		div#waza {
+			color: #339933;
+			background-color: #ffffff;
+			width: 144px;
+			float: right;
+			}
+			
+			.box {
+  				width: 200px;                /* 横幅を200pxに指定 */
+  				height: 500px;               /* 横幅を200pxに指定 */
+ 				 border: 1px solid #000;      /* わかりやすくボーダーを引く */
+ 				 overflow-y: scroll;          /* 縦方向にスクロール可能にする */
+				}
+				.kekka{
+					color:red;
+					font-size: 30px;
+				}
 
-h1 {
-color: #ffffff;
-}
-
-h2 {
-color: #339933;
-}
-
-p {
-line-height: 2em;
-}
-
-p.hl {
-font-size: 1.25em;
-color: #ffffff;
-}
-
-header, div#main, div#waza, footer {
-padding: 8px;
-}
-
-header {
-background-color: #339933;
-}
-
-div#content {
-width: 760px;
-overflow: hidden;
-}
-
-div#main {
-background-color: #ffffff;
-width: 584px;
-float: right;
-}
-
-div#waza {
-color: #339933;
-background-color: #ffffff;
-width: 144px;
-float: left;
-}
-
-nav a:link {
-color: #ffffff;
-}
-
-nav a:visited {
-color: #ccffcc;
-}
-
-nav a:hover {
-color: #339933;
-}
-
-nav li {
-line-height: 2em;
-}
-
-footer {
-color: #ffffff;
-background-color: #339933;
-}
 	</style>
 </head>
 
@@ -109,10 +59,60 @@ background-color: #339933;
 	<div id="content">
 		<div id="main">
 	<form th:action="@{/poke_damage}" method="POST">
-		<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" />
-		<input type="text" name="Poke_name2"  class="I_2" id="Poke_name2" />
-		<input type="text" name="waza"  class="I_3" id="Poke_name3" />
-			
+		攻撃<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" />
+		<select id="waza" name="terasu1">
+					<option value="なし">テラスタルなし</option>	
+					<option value="あり">テラスタルあり</option>	
+					<option value="ステラ">ステラ</option>	
+		</select>
+		<select id="sel" name="button1">
+					<option value="ノーマル">既存ポケモン</option>	
+					<option value="AI">AI</option>	
+				</select><br>
+				<input type="checkbox" name="hp1" value="あり">体力
+				<input type="checkbox" name="atk1" value="あり">攻撃
+				<input type="checkbox" name="satk1" value="あり">特殊
+				<input type="checkbox" name="def1" value="あり">防御
+				<input type="checkbox" name="sdef1" value="あり">特防
+				<input type="checkbox" name="sp1" value="あり">素早さ<br>
+		
+		守備<input type="text" name="Poke_name2"  class="I_2" id="Poke_name2" />
+		<select id="waza" name="terasu2">
+					<option value="なし">テラスタルなし</option>	
+					<option value="ほのお">ほのお</option>	
+					<option value="くさ">くさ</option>
+					<option value="みず">みず</option>
+					<option value="むし">むし</option>
+					<option value="どく">どく</option>
+					<option value="ひこう">ひこう</option>
+					<option value="ノーマル">ノーマル</option>
+					<option value="でんき">でんき</option>
+					<option value="じめん">じめん</option>
+					<option value="フェアリー">フェアリー</option>
+					<option value="かくとう">かくとう</option>
+					<option value="こおり">こおり</option>
+					<option value="エスパー">エスパー</option>
+					<option value="いわ">いわ</option>
+					<option value="ドラゴン">ドラゴン</option>
+					<option value="ゴースト">ゴースト</option>
+					<option value="あく">あく</option>
+					<option value="はがね">はがね</option>	
+		</select>
+		<select id="sel" name="button2">
+					<option value="ノーマル">既存ポケモン</option>
+					<option value="AI">AI</option>	
+							
+				</select><br>
+		
+				<input type="checkbox" name="hp2" value="あり">体力
+				<input type="checkbox" name="atk2" value="あり">攻撃
+				<input type="checkbox" name="satk2" value="あり">特殊
+				<input type="checkbox" name="def2" value="あり">防御
+				<input type="checkbox" name="sdef2" value="あり">特防
+				<input type="checkbox" name="sp2" value="あり">素早さ<br>
+		
+		技<input type="text" name="waza"  class="I_3" id="Poke_name3" />
+		
 			
 		<p><input type="submit" value="計算"></p>
 	</form>
@@ -148,9 +148,7 @@ background-color: #339933;
 			
 			<div class="card-body">
 				<h5 class="card-title">守備側</h5>
-				<input type="checkbox" name="programming7" value="hp2">体力
-				<input type="checkbox" name="programming8" value="def2">防御
-				<input type="checkbox" name="programming9" value="sdef2">特防<br>
+				
 				
 					<th:block th:each="reslt2 :${selectPoke2}">
 						名前<p th:text="${reslt2.jname}"></p>
@@ -169,36 +167,36 @@ background-color: #339933;
 				<p class="card-text">
 				</p>
 				
-				<p th:text="${damage}"></p>
 				
 				
-					<select id="waza" name="terasu">
-					<option value=160>テラスタル</option>	
-					<option value="10001">---</option>	
-					<option value="りんご">---</option>	
-					<option value="メロン">---</option>	
-					<option value="バナナ">---</option>	
-				</select>
+				
+					
 			</div>
 		</div>
 		
-			
-
-				<input type="text" name="result" value="0" readonly>
+		<p th:text="${damage}" class="kekka"></p>
+	
+		</div>
 		
 	<a href="poke_login">ログイン</a>
 	<a href="poke_sinki">新規登録</a>
 	<a href="poke_Ai">AI</a>
-		</div>
-	<div id="waza">
-		<h2>技リスト</h2>
+		<div class="box">
+ 			<h2>技リスト</h2>
 				<th:block th:each="reslt3 :${selectPoke3}">
 						
 						<p th:text="${reslt3.name}"></p>
 						
-					</th:block>
-					</div>
+					</th:block></div>
+	
+	
+					
 	</div>
 </body>
 
+<script>
+	
+	
+	
+</script>
 </html>

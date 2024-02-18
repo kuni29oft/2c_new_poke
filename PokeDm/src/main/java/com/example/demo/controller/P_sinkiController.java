@@ -1,5 +1,8 @@
 package com.example.demo.controller;
 
+import java.util.List;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
@@ -23,12 +26,21 @@ public class P_sinkiController {
 	
 	@RequestMapping(path="/poke_sinki",method=RequestMethod.POST)
 	public String P_sinki(String Poke_id, String Poke_pass, Model model, HttpSession session) {
-	
-			jdbcTemplate.update("insert into user1(ID,password) values(?,?)",Poke_id,Poke_pass);
+		List<Map<String,Object>> resultList;
+		resultList=jdbcTemplate.queryForList("select * from user1 where ID =? and password=?",Poke_id,Poke_pass);
+		
+		int x = resultList.size();
+		if(1<=x) {
+		model.addAttribute("message","この情報は登録済みです")	;
 			return "p_sinki";
-		
 			
-		
+		}else {
+			jdbcTemplate.update("insert into user1(ID,password) values(?,?)",Poke_id,Poke_pass);
+			return "p_login";
+			
+		}
+	
+
 			
 			
 		}

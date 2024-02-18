@@ -31,7 +31,7 @@ public class P_Ai_GenerateController {
 				    .header("accept", "application/json")
 				    .header("content-type", "application/json")
 				    .header("X-Prodia-Key", "3d1ca348-aed2-4fa3-86dd-7583f2f5ef4a")
-				    .method("POST", HttpRequest.BodyPublishers.ofString("{\"model\":\"sd_xl_base_1.0.safetensors [be9edd61]\",\"prompt\":\""+Poke_prompt+"\",\"negative_prompt\":\"badly drawn\",\"style_preset\":\"anime\",\"steps\":20,\"cfg_scale\":7,\"seed\":-1,\"sampler\":\"DPM++ 2M Karras\",\"width\":1024,\"height\":1024}"))
+				    .method("POST", HttpRequest.BodyPublishers.ofString("{\"model\":\"sd_xl_base_1.0.safetensors [be9edd61]\",\"prompt\":\""+Poke_prompt+"\",\"negative_prompt\":\"badly drawn\",\"style_preset\":\"anime\",\"steps\":20,\"cfg_scale\":7,\"seed\":-1,\"sampler\":\"DPM++ 2M Karras\",\"width\":512,\"height\":512}"))
 				    .build();
 				HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
 				System.out.println(response.body());
