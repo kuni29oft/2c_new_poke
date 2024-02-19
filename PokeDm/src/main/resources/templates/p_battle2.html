@@ -58,6 +58,7 @@
 <body>
 	<div id="content">
 		<div id="main">
+			
 	<form th:action="@{/poke_damage}" method="POST">
 		攻撃<input type="text" name="Poke_name1" class="I_1" id="Poke_name1" />
 		<select id="waza" name="terasu1">
@@ -178,8 +179,7 @@
 	
 		</div>
 		
-	<a href="poke_login">ログイン</a>
-	<a href="poke_sinki">新規登録</a>
+	<a th:href="@{/poke_login}">ログアウト</a>
 	<a href="poke_Ai">AI</a>
 		<div class="box">
  			<h2>技リスト</h2>

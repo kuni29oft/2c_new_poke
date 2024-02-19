@@ -30,8 +30,10 @@ public class P_bato_controller {
 	
 	@RequestMapping(path="/poke_damage",method=RequestMethod.POST)
 	public String battle(String Poke_name1,String Poke_name2,String waza,String terasu1,String terasu2,String hp1,String hp2,String atk1,String atk2,String satk1,String satk2,String def1,String def2,String sdef1,String sdef2,String sp1,String sp2,String button1,String button2,HttpSession session,Model model) {
-		System.out.println(waza);
 		List<Map<String, Object>> resultList1,resultList2,resultList3,resultList4,resultList5,resultList6;
+		System.out.println(waza);
+		
+		
 		System.out.println(hp1);
 		String ID = (String) session.getAttribute("Poke_id");
 		resultList1=jdbcTemplate.queryForList("select * from poke2 where jname =?",Poke_name1);
@@ -60,6 +62,8 @@ public class P_bato_controller {
 		int damage=0;
 		
 		int wazadata=(Integer)resultList3.get(0).get("power");
+		
+		
 		if(wazadata<10) {
 			wazadata=wazapower(resultList1,resultList2,wazadata,hp1,hp2,sp1,sp2);
 			System.out.println(wazadata);

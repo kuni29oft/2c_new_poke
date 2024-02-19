@@ -20,7 +20,7 @@ public class P_AiInsertController {
 	JdbcTemplate jdbcTemplate;
 	
 
-@RequestMapping(path = "/poke_Ai/Insert", method = RequestMethod.POST)
+@RequestMapping(path = "/poke_Ai_Insert", method = RequestMethod.POST)
 public String AIInsert(String Poke_image,String Poke_name,String type1,String type2,String hp,String atk,String def,String satk,String sdef,String sp,String height,String weight, Model model,HttpSession session)  {
 	List<Map<String, Object>> resultList6,resultList7;
 	Integer.parseInt(hp);

@@ -10,6 +10,9 @@
 	
 	<style>
 		
+		body{
+			background-color: #f5f5f5;
+		}
 		.box {
   				width: 200px;                /* 横幅を200pxに指定 */
   				height: 500px;               /* 横幅を200pxに指定 */
@@ -31,6 +34,7 @@
 
 		<h2 class="login-header">AI</h2>
 
+<a th:href="@{/poke_login}">ログアウト</a>
 		<div class="box">
  			<h2>リスト</h2>
 				<th:block th:each="reslt3 :${AI_list}">
@@ -40,7 +44,6 @@
 					</th:block>
 					</div>
 		
-		<a href="poke_login">ログイン</a>
 		<a href="poke_damage">ダメージ計算</a>
 		
 		<h2>オリジナルポケモン生成</h2>
@@ -55,16 +58,16 @@
 			<p th:text="${message}" class="kekka"></p>
 			
 			<h2>ポケモン登録</h2>
-			<form th:action="@{/poke_Ai/Insert}" method="POST">
+			<form th:action="@{/poke_Ai_Insert}" method="POST">
 				<input type="hidden" id="Poke_image" name="Poke_image">
 				name<input type="text" id="Poke_name" name="Poke_name"><br>
 				タイプ1<input type="text" id="type1" name="type1"><br>
 				タイプ2<input type="text" id="type2" name="type2"><br>
-				HP<input type="text" id="hp" name="hp"><br>
-				ATK<input type="text" id="atk" name="atk"><br>
-				DEF<input type="text" id="def" name="def"><br>
-				SATK<input type="text" id="satk" name="satk"><br>
-				SDEF<input type="text" id="sdef" name="sdef"><br>
+				HP     <input type="text" id="hp" name="hp"><br>
+				ATK    <input type="text" id="atk" name="atk"><br>
+				DEF    <input type="text" id="def" name="def"><br>
+				SATK   <input type="text" id="satk" name="satk"><br>
+				SDEF   <input type="text" id="sdef" name="sdef"><br>
 				SPEED<input type="text" id="sp" name="sp"><br>
 				高さ<input type="text" id="height" name="height"><br>
 				重さ<input type="text" id="weight" name="weight"><br>

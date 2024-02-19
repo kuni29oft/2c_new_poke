@@ -18,8 +18,8 @@ public class P_login_controller {
 	@Autowired
 	JdbcTemplate jdbcTemplate;
 	@RequestMapping(path="/poke_login",method=RequestMethod.GET)
-	public String battle(Model model) {
-		
+	public String battle(Model model,HttpSession session) {
+		session.removeAttribute("Poke_id");
 		return "p_login" ;
 		
 	}
@@ -31,7 +31,7 @@ public class P_login_controller {
 			int x = resultList.size();
 			if(1<=x) {
 				session.setAttribute("Poke_id",Poke_id);
-				return "redirect:/poke_Ai";
+				return "redirect:/poke_damage";
 				
 			}else {
 				System.out.println("ログインに失敗しました");

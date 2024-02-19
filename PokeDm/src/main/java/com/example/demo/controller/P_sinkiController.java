@@ -27,7 +27,7 @@ public class P_sinkiController {
 	@RequestMapping(path="/poke_sinki",method=RequestMethod.POST)
 	public String P_sinki(String Poke_id, String Poke_pass, Model model, HttpSession session) {
 		List<Map<String,Object>> resultList;
-		resultList=jdbcTemplate.queryForList("select * from user1 where ID =? and password=?",Poke_id,Poke_pass);
+		resultList=jdbcTemplate.queryForList("select * from user1 where ID =?",Poke_id);
 		
 		int x = resultList.size();
 		if(1<=x) {

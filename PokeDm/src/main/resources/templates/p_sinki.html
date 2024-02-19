@@ -72,6 +72,9 @@
 .login input[type="submit"]:focus {
   border-color: #05a;
 }
+.kekka{
+					color:red;
+				}
 </style>
 </head>
 <body>
@@ -79,14 +82,14 @@
   <div class="login-triangle"></div>
   
   <h2 class="login-header">新規登録</h2>
-
+<p th:text="${message}" class="kekka"></p>
   <form th:action="@{/poke_sinki}" method="POST">
     <p><input type="text" name="Poke_id"></p>
     <p><input type="password" name="Poke_pass"></p>
     <p><input type="submit" value="新規登録"></p>
   </form>
   <a href="poke_login">ログイン</a>
-	<a href="poke_damage">ダメージ計算</a>
+	
 
 </body>
 </html>

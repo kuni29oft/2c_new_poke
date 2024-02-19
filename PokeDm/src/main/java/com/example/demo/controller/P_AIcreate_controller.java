@@ -28,6 +28,26 @@ public class P_AIcreate_controller {
 		return "p_Ai";
 
 	}
+	@RequestMapping(path = "/poke_Ai_Insert", method = RequestMethod.GET)
+	public String battle_insert(HttpSession session,Model model) {
+
+		String ID = (String) session.getAttribute("Poke_id");
+		List<Map<String, Object>> resultList6=jdbcTemplate.queryForList("select * from poke_ai where user_name =?",ID);
+		model.addAttribute("AI_list",resultList6);
+		
+		return "p_Ai";
+
+	}
+	@RequestMapping(path = "/poke_Ai_select", method = RequestMethod.GET)
+	public String battle_select(HttpSession session,Model model) {
+
+		String ID = (String) session.getAttribute("Poke_id");
+		List<Map<String, Object>> resultList6=jdbcTemplate.queryForList("select * from poke_ai where user_name =?",ID);
+		model.addAttribute("AI_list",resultList6);
+		
+		return "p_Ai";
+
+	}
 
 
 }
