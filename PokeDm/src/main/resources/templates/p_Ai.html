@@ -24,6 +24,10 @@
 			float: right;
 			      
 	}
+	.kekka{
+		width: 200px;                /* 横幅を200pxに指定 */
+  		             /* 横幅を200pxに指定 */
+	}
 	</style>
 </head>
 
@@ -47,7 +51,7 @@
 		<a href="poke_damage">ダメージ計算</a>
 		
 		<h2>オリジナルポケモン生成</h2>
-			<p><input type="text" id="Poke_prompt"></p>
+			<p><input type="text" id="Poke_prompt" placeholder="作りたい要求"></p>
 				<button onclick="second()">生成</button>
 				
 				<img id="myImage1"
@@ -60,17 +64,17 @@
 			<h2>ポケモン登録</h2>
 			<form th:action="@{/poke_Ai_Insert}" method="POST">
 				<input type="hidden" id="Poke_image" name="Poke_image">
-				name<input type="text" id="Poke_name" name="Poke_name"><br>
-				タイプ1<input type="text" id="type1" name="type1"><br>
-				タイプ2<input type="text" id="type2" name="type2"><br>
-				HP     <input type="text" id="hp" name="hp"><br>
-				ATK    <input type="text" id="atk" name="atk"><br>
-				DEF    <input type="text" id="def" name="def"><br>
-				SATK   <input type="text" id="satk" name="satk"><br>
-				SDEF   <input type="text" id="sdef" name="sdef"><br>
-				SPEED<input type="text" id="sp" name="sp"><br>
-				高さ<input type="text" id="height" name="height"><br>
-				重さ<input type="text" id="weight" name="weight"><br>
+				<input type="text" id="Poke_name" name="Poke_name" placeholder="名前"><br>
+				<input type="text" id="type1" name="type1"placeholder="タイプ1"><br>
+				<input type="text" id="type2" name="type2"placeholder="タイプ2"><br>
+				<input type="text" id="hp" name="hp"placeholder="体力"><br>
+				<input type="text" id="atk" name="atk"placeholder="攻撃"><br>
+				<input type="text" id="def" name="def"placeholder="守備"><br>
+				<input type="text" id="satk" name="satk"placeholder="特攻"><br>
+				<input type="text" id="sdef" name="sdef"placeholder="特防"><br>
+				<input type="text" id="sp" name="sp"placeholder="速さ"><br>
+				<input type="text" id="height" name="height"placeholder="高さ"><br>
+				<input type="text" id="weight" name="weight"placeholder="重さ"><br>
 				<input type="submit" value="保存"><br>
 			</form>
 			
@@ -79,7 +83,7 @@
 				<h2>ポケモン検索</h2>
 				<form th:action="@{/poke_Ai_select}" method="POST">
 					
-					<p><input type="text" name="Poke_select"id="Poke_select"></p>
+					<p><input type="text" name="Poke_select"id="Poke_select" placeholder="名前入力"></p>
 				<select id="sel" name="button">
 					<option value="AI">AI</option>	
 					<option value="ノーマル">既存ポケモン</option>		
